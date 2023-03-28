@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "gym2048"
+version = "0.1.0"
+description = ""
+authors = ["Shuhei Yamashita <yamashita-shuhei@g.ecc.u-tokyo.ac.jp>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+gymnasium = "^0.27.1"
+pytest = "^7.2.2"
+pygame = "^2.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

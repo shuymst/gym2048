@@ -1,0 +1,1 @@
+from gym2048.envs.game import TwentyFortyeight

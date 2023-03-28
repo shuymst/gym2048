@@ -1,0 +1,1 @@
+from gym2048.wrappers.step_reward import StepReward
