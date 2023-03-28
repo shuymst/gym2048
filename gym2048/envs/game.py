@@ -14,6 +14,7 @@ class TwentyFortyeight(gym.Env):
         self.square_size = 100 # The size of the square 
         self.window_size = 512 # The size of the PyGame window
 
+        self.observation_space = spaces.MultiDiscrete(np.array([[18 for _ in range(4)] for _ in range(4)]))
         self.action_space = spaces.Discrete(4)
         self._tiles = np.zeros(shape=(4,4), dtype=np.int32)
         self._is_legal_actions = [False for _ in range(4)]
@@ -33,7 +34,7 @@ class TwentyFortyeight(gym.Env):
         for action in range(4):
             self._is_legal_actions[action] = self._is_changed_by(action)
 
-        return self._get_obs(), 0
+        return self._get_obs(), {}
     
     def step(self, action):
         if action == 0:
@@ -167,7 +168,7 @@ class TwentyFortyeight(gym.Env):
                 terminated = False
                 legal_actions.append(next_action)
 
-        return self._get_obs(), reward, terminated, False, legal_actions
+        return self._get_obs(), reward, terminated, False, {"legal actions": legal_actions}
 
     def render(self):
         if self.render_mode is None:
@@ -201,7 +202,7 @@ class TwentyFortyeight(gym.Env):
         
     def _spawn(self, x, y, num):
         assert 0 <= x <= 3 and 0 <= y <= 3
-        assert 0 <= num <= 18
+        assert 0 <= num <= 17
         assert self._is_empty(x, y)
         self._tiles[x][y] = num
     

@@ -1,1 +1,2 @@
 from gym2048.envs.game import TwentyFortyeight
+TwentyFortyeight._calculate_right_action()
